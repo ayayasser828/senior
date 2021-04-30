@@ -2,7 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:senior/screen/Reservations.dart';
 import 'package:senior/screen/homepage.dart';
+import 'package:senior/screen/payment.dart';
 import 'package:senior/screen/signin.dart';
 import 'package:senior/screen/splashScreen.dart';
 import 'package:senior/screen/verify.dart';
@@ -38,6 +40,8 @@ class MyApp extends StatelessWidget {
           Verify.routeName: (context) => Verify(),
           Verify2.routeName: (context) => Verify2(),
           HomePage.routeName: (context) => HomePage(),
+          Payment.routeName: (context) => Payment(),
+          Reservation.routeName: (context) => Reservation(),
         },
 
       ),

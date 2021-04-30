@@ -42,20 +42,23 @@ class Signin extends StatelessWidget {
                     Text('HELLO!',style: TextStyle(
                       fontSize: 38,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: Colors.lightGreen[900],
+                        fontFamily:'Acme'
                     ),),
                     Text('We are WorkySpace.',style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
+
                     ),),
                     SizedBox(height: height*0.01,),
                     Text('Create an account or login to begin adventure.',style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
+                        fontFamily:'Pacifico'
                     ),),
-                    SizedBox(height: height*0.15,),
+                    SizedBox(height: height*0.1,),
                     InkWell(
                       onTap: (){
                         Navigator.pushNamed(context, Verify.routeName);

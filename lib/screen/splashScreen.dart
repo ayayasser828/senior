@@ -37,9 +37,43 @@ class _SplashScreenState extends State<SplashScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Center(
-        child: Text("Aya :)"),
+      body: Stack(
+        children: [
+          Container(
+            width: width,
+            height: height,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/w4.jpg'),
+                fit: BoxFit.cover,
+
+              ),
+            ),
+          ),
+          Positioned(
+            top: 120,
+            left: 10,
+            child: Text('Worky',style: TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+                fontFamily:'Pacifico'
+            ),),
+          ),
+          Positioned(
+            bottom: 150,
+            left: 45,
+            child: Text('Space',style: TextStyle(
+              fontSize: 50,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+              fontFamily:'Pacifico'
+            ),),
+          ),
+        ],
       ),
     );
   }

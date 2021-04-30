@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:senior/provider/user_preferences.dart';
+import 'package:senior/screen/Reservations.dart';
+import 'package:senior/screen/payment.dart';
 import 'package:senior/screen/signin.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -10,7 +12,7 @@ class MainDrawer extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     return Drawer(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 60),
+        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 70),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,6 +27,7 @@ class MainDrawer extends StatelessWidget {
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
+                    fontFamily:'Acme'
                 ),)
               ],
             ),
@@ -35,35 +38,50 @@ class MainDrawer extends StatelessWidget {
               indent: 20,
               endIndent: 20,
             ),
-            SizedBox(height: height*0.09,),
-            Text('Your Reservations ',style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),),
+            SizedBox(height: height*0.05,),
+            InkWell(
+              onTap: (){
+                Navigator.pushNamed(context, Reservation.routeName);
+              },
+              child: Text('Your Reservations ',style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Colors.lightGreen[900],
+                  fontFamily:'Acme'
+              ),),
+            ),
             SizedBox(height: height*0.04,),
-            Text('Payment ',style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),),
+            InkWell(
+              onTap: (){
+                Navigator.pushNamed(context, Payment.routeName);
+              },
+              child: Text('Payment ',style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Colors.lightGreen[900],
+                  fontFamily:'Acme'
+              ),),
+            ),
             SizedBox(height: height*0.04,),
             Text('Startup ',style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.bold,
-              color: Colors.black,
+              color: Colors.lightGreen[900],
+                fontFamily:'Acme'
             ),),
             SizedBox(height: height*0.04,),
-            Text('Sittings ',style: TextStyle(
+            Text('Settings ',style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.bold,
-              color: Colors.black,
+              color: Colors.lightGreen[900],
+                fontFamily:'Acme'
             ),),
             SizedBox(height: height*0.04,),
             Text('help ',style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.bold,
-              color: Colors.black,
+              color: Colors.lightGreen[900],
+                fontFamily:'Acme'
             ),),
             SizedBox(height: height*0.04,),
             InkWell(
@@ -77,7 +95,8 @@ class MainDrawer extends StatelessWidget {
               child: Text('Logout ',style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: Colors.lightGreen[900],
+                  fontFamily:'Acme'
               ),),
             ),
           ],

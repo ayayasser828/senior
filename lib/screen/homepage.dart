@@ -28,6 +28,13 @@ class HomePage extends StatelessWidget {
       Name: 'Your space',
       rate: 5
     ),
+    WorkspaceModel(
+        id: 'a2',
+        price: 20,
+        image: 'assets/images/w2.jpg',
+        Name: 'Alex Target',
+        rate: 4
+    ),
   ];
   static const String routeName = "/homepage";
   @override
