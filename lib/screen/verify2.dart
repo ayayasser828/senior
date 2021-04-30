@@ -1,12 +1,56 @@
 
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:senior/provider/user_preferences.dart';
 import 'package:senior/screen/homepage.dart';
+import 'package:senior/services/auth.dart';
 
 
-class Verify2 extends StatelessWidget {
+class Verify2 extends StatefulWidget {
   static  String smsCode = '';
+  // String userId = Auth().auth.currentUser.uid;
   static const String routeName = "/verify2";
+
+  @override
+  _Verify2State createState() => _Verify2State();
+}
+
+class _Verify2State extends State<Verify2> {
+  String _phone = Auth.phoneN;
+
+  UserPreferences userPreferences;
+
+  StreamController<ErrorAnimationType> errorController = StreamController<ErrorAnimationType>();
+
+  TextEditingController textEditingController = TextEditingController();
+
+
+
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Aya hhhhh'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Back'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -61,7 +105,7 @@ class Verify2 extends StatelessWidget {
                           child: PinCodeTextField(
                             validator: (input){
                               if (input.isEmpty){
-                                return'من فضلك ادخل كود التفعيل';
+                                return'please enter code';
                               }
                               return null;
                             },
@@ -85,14 +129,14 @@ class Verify2 extends StatelessWidget {
                             ),
                             animationDuration: Duration(milliseconds: 300),
                             enableActiveFill: false,
-                            //errorAnimationController: errorController,
-                            //controller: textEditingController,
+                            errorAnimationController: errorController,
+                            controller: textEditingController,
                             onCompleted: (v) {
                               print("Completed");
                             },
                             onChanged: (value) {
                               print(value);
-                              smsCode = value;
+                              Verify2.smsCode = value;
                             },
                             beforeTextPaste: (text) {
                               print("Allowing to paste $text");
@@ -122,8 +166,12 @@ class Verify2 extends StatelessWidget {
                       ),
                       SizedBox(height: height*0.05,),
                       InkWell(
-                        onTap: (){
-                          Navigator.pushNamed(context, HomePage.routeName);
+                        onTap: () async{
+                          Auth.phoneN = _phone;
+
+                         await Auth().signInWithPhoneNumber(Verify2.smsCode, context);
+
+
                         },
                         child: Container(
                             height: height*0.08,

@@ -1,13 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:senior/screen/homepage.dart';
 import 'package:senior/screen/signin.dart';
+import 'package:senior/screen/splashScreen.dart';
 import 'package:senior/screen/verify.dart';
 import 'package:senior/screen/verify2.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp().whenComplete(() {
+    print("completed");
+
+  });
   runApp(MyApp());
 }
 
@@ -26,7 +32,7 @@ class MyApp extends StatelessWidget {
 
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Signin(),
+        home: SplashScreen(),
         routes: {
           Signin.routeName: (context) => Signin(),
           Verify.routeName: (context) => Verify(),

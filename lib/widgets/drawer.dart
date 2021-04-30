@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:senior/provider/user_preferences.dart';
+import 'package:senior/screen/signin.dart';
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -64,11 +66,20 @@ class MainDrawer extends StatelessWidget {
               color: Colors.black,
             ),),
             SizedBox(height: height*0.04,),
-            Text('Logout ',style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),),
+            InkWell(
+              onTap: (){
+                UserPreferences().removeUser();
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                        builder: (context) => Signin()),
+                        (route) => false);
+              },
+              child: Text('Logout ',style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),),
+            ),
           ],
         ),
       ),

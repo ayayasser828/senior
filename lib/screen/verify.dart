@@ -2,9 +2,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:senior/screen/verify2.dart';
+import 'package:senior/services/auth.dart';
 
-class Verify extends StatelessWidget {
+
+class Verify extends StatefulWidget {
   static const String routeName = "/verify";
+  @override
+  _VerifyState createState() => _VerifyState();
+}
+class _VerifyState extends State<Verify> {
+  String _phone = Auth.phoneN;
+  GlobalKey<ScaffoldState> scaffoldKey;
+  final _formKey = GlobalKey<FormState>();
+
+  TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -45,7 +56,7 @@ class Verify extends StatelessWidget {
                       color: Colors.black,
                     ),),
                     SizedBox(height: height*0.01,),
-                    Text('you will receive a 4 digit code for phone number verification.',
+                    Text('you will receive a 6 digit code for phone number verification.',
                       style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
@@ -108,23 +119,43 @@ class Verify extends StatelessWidget {
                                   color: Colors.black,
                                 ),),
                                 SizedBox(width: width*0.02,),
-                                Container(
-                                  width: width*0.7,
-                                  height: height*0.08,
-                                  child: TextField(
-                                    keyboardType: TextInputType.number,
-                                    textAlignVertical: TextAlignVertical.bottom,
-                                    decoration: InputDecoration(
-                                      alignLabelWithHint: true,
-                                      hintText: 'Phone number ',
-                                      border: OutlineInputBorder(
-                                        borderSide: BorderSide.none,
+                                Form(
+                                  key: _formKey,
+                                  child: Container(
+                                    width: width*0.7,
+                                    height: height*0.08,
+                                    child: TextFormField(
+                                      keyboardType: TextInputType.number,
+                                      textAlignVertical: TextAlignVertical.bottom,
+                                      validator: (input){
+                                        if (input.isEmpty){
+                                          return'Please enter your phone';
+                                        }
+                                        else if(input.length != 10){
+                                          return 'valid number';
+                                        }
+                                        return null;
+                                      },
+                                      onSaved: (input) => _phone = input,
+                                      onChanged: (input){
+                                        setState(() {
+                                          _phone = input;
+                                        });
+                                      },
+                                      decoration: InputDecoration(
+                                        alignLabelWithHint: true,
+                                        hintText: 'Phone number ',
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide.none,
+                                        ),
                                       ),
+                                      cursorColor: Colors.white,
+                                      cursorHeight: 0,
+                                      cursorWidth: 0,
+                                      showCursor: false,
+                                      controller: _controller,
+
                                     ),
-                                    cursorColor: Colors.white,
-                                    cursorHeight: 0,
-                                    cursorWidth: 0,
-                                    showCursor: false,
                                   ),
                                 ),
 
@@ -136,8 +167,16 @@ class Verify extends StatelessWidget {
                     ),
                     SizedBox(height: height*0.03,),
                     InkWell(
-                      onTap: (){
-                        Navigator.pushNamed(context, Verify2.routeName);
+                      onTap: () async {
+                        Auth.phoneN = "$_phone";
+                        if(_formKey.currentState.validate()) {
+                          print(3);
+                          Auth().initVerifyCall(_phone, context);
+                          Navigator.of(context).pushNamed(Verify2.routeName);
+                          print(2);
+                        }else{
+                          print(1);
+                        }
                       },
                       child: Container(
                           height: height*0.08,
@@ -171,4 +210,6 @@ class Verify extends StatelessWidget {
       ),
     );
   }
+
+
 }
