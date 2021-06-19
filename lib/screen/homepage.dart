@@ -1,42 +1,39 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:senior/model/workspaceAPImodel.dart';
+import 'package:senior/provider/WorkspaceProvider.dart';
 import 'package:senior/widgets/drawer.dart';
 import 'package:senior/widgets/workspace_item.dart';
 import 'package:senior/widgets/workspace_item2.dart';
 import '../model/workspace_model.dart';
-class HomePage extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  final List<WorkspaceModel> data =[
-    WorkspaceModel(
-      id: 'a1',
-      price: 20,
-      image: 'assets/images/w.jpg',
-      Name: 'Alex Lap',
-      rate: 3
-    ),
-    WorkspaceModel(
-      id: 'a2',
-      price: 20,
-      image: 'assets/images/w2.jpg',
-      Name: 'Alex Target',
-      rate: 4
-    ),
-    WorkspaceModel(
-      id: 'a1',
-      price: 20,
-      image: 'assets/images/w3.jpg',
-      Name: 'Your space',
-      rate: 5
-    ),
-    WorkspaceModel(
-        id: 'a2',
-        price: 20,
-        image: 'assets/images/w2.jpg',
-        Name: 'Alex Target',
-        rate: 4
-    ),
-  ];
+class HomePage extends StatefulWidget {
   static const String routeName = "/homepage";
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  List<WorkspaceApImodel>  workspaceApImodel =[];
+  bool n=false;
+  void initState() {
+    getData();
+    // TODO: implement initState
+    print(3);
+    super.initState();
+  }
+
+  Future<void> getData() async{
+    await Provider.of<WorkspaceProvider>(context,listen:false).getHttp().then((value){
+      workspaceApImodel = Provider.of<WorkspaceProvider>(context,listen: false).item;
+      setState(() {
+        n =true;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -73,20 +70,22 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              //SizedBox(height: height*0.01,),
+              SizedBox(height: height*0.01,),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 75),
-                child: Text('Find your',style: TextStyle(
-                  fontSize: 33,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                child: Text('Hi, aya',style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black54,
                 ),),
               ),
+              SizedBox(height: height*0.02,),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 75),
-                child: Text('Comfort place',style: TextStyle(
-                  fontSize: 33,
-                  color: Colors.black54,
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                child: Text("where today you'll work ? "
+                    ,style: TextStyle(
+                  fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  color: Colors.black,
                 ),),
               ),
               SizedBox(height: height*0.03,),
@@ -116,38 +115,37 @@ class HomePage extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: Colors.black38,
                           ),),
-                          
+
                         ],
                       )
                   ),
                 ),
               ),
-              SizedBox(height: height*0.03,),
+              SizedBox(height: height*0.02,),
               Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                child: Text(" Recommended for you "
+                  ,style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),),
+              ),
+              SizedBox(height: height*0.01,),
+              n ? Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Container(
                   width: width,
                   height: height*0.6,
                   child: GridView.builder(
                     padding: const EdgeInsets.all(10.0),
-                    itemCount: data.length,
-                    itemBuilder: (ctx ,i){
-                      if(i%2==0){
-                        return WorkspaceItem(
-                            data[i].rate,
-                            data[i].Name,
-                            data[i].id,
-                            data[i].price,
-                            data[i].image
-                        );
-                      }else{
-                        return WorkspaceItem2(
-                            data[i].rate,
-                            data[i].Name,
-                            data[i].id,
-                            data[i].price,
-                            data[i].image
-                        );
+                    itemCount: workspaceApImodel.length,
+                    itemBuilder: (context,index){
+                      if (index%2==0){
+                        return ChangeNotifierProvider.value(value: workspaceApImodel[index],child: WorkspaceItem(),);
+                      }
+                      else{
+                        return ChangeNotifierProvider.value(value: workspaceApImodel[index],child: WorkspaceItem2(),);
                       }
                     },
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -158,7 +156,12 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              ):Center(
+                child: Container(
+                    width: 50,
+                    height: 50,
+                    child: CircularProgressIndicator()),
+              ),
 
             ],
           )

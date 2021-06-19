@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:senior/model/workspaceAPImodel.dart';
+import 'package:senior/provider/WorkspaceProvider.dart';
 import 'package:senior/screen/Reservations.dart';
 import 'package:senior/screen/homepage.dart';
 import 'package:senior/screen/payment.dart';
@@ -9,6 +11,7 @@ import 'package:senior/screen/signin.dart';
 import 'package:senior/screen/splashScreen.dart';
 import 'package:senior/screen/verify.dart';
 import 'package:senior/screen/verify2.dart';
+import 'package:senior/screen/ws_profile.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +31,12 @@ class MyApp extends StatelessWidget {
     ]);
     return MultiProvider(
         providers: [
-
+          ChangeNotifierProvider.value(
+            value: WorkspaceProvider(),
+          ),
+          ChangeNotifierProvider.value(
+            value: WorkspaceApImodel(),
+          ),
 
           ],
 
@@ -42,6 +50,7 @@ class MyApp extends StatelessWidget {
           HomePage.routeName: (context) => HomePage(),
           Payment.routeName: (context) => Payment(),
           Reservation.routeName: (context) => Reservation(),
+          WsProfile.routeName: (context) => WsProfile(),
         },
 
       ),
