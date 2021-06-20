@@ -71,17 +71,18 @@ class WsProfile extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: height*0.05,),
+                            SizedBox(height: height*0.06,),
                             Text(name,style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),),
+                            SizedBox(height: height*0.01,),
                             Text(location,style: TextStyle(
                               fontSize: 17,
                               color: Colors.black54,
                             ),),
-                            SizedBox(height: height*0.02,),
+                            SizedBox(height: height*0.03,),
                             Container(
                               width:width,
                               height: height*0.13,
@@ -163,7 +164,7 @@ class WsProfile extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                      bottom: 0,
+                      bottom: -35,
                       child: Container(
                         width: width,
                         height: height*0.2,
@@ -172,18 +173,30 @@ class WsProfile extends StatelessWidget {
                           borderRadius: BorderRadius.circular(50)
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            SizedBox(width: width*0.15,),
                             Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text('price'),
-                                Text('20 LE/hour')
+                                SizedBox(height: height*0.06,),
+                                Text('price',style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),),
+                                Text('20 LE/hour',style: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.black54,
+                                ),)
                               ],
                             ),
+                            SizedBox(width: width*0.1,),
                             InkWell(
                               child: Container(
-                                width: width*0.3,
-                                height: height*0.05,
+                                width: width*0.38,
+                                height: height*0.06,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                   color: Colors.lightGreen[900],
