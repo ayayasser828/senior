@@ -2,8 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:senior/model/history_model.dart';
 import 'package:senior/model/workspaceAPImodel.dart';
 import 'package:senior/provider/WorkspaceProvider.dart';
+import 'package:senior/provider/history_provider.dart';
 import 'package:senior/screen/Reservations.dart';
 import 'package:senior/screen/homepage.dart';
 import 'package:senior/screen/payment.dart';
@@ -36,6 +38,12 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider.value(
             value: WorkspaceApImodel(),
+          ),
+          ChangeNotifierProvider.value(
+            value: HistoryProvider(),
+          ),
+          ChangeNotifierProvider.value(
+            value: HistoryModel(),
           ),
 
           ],

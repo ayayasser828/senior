@@ -1,5 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:senior/model/history_model.dart';
+import 'package:senior/provider/history_provider.dart';
 import 'package:senior/widgets/history.dart';
 
 class Reservation extends StatefulWidget {
@@ -11,8 +14,25 @@ class Reservation extends StatefulWidget {
 
 class _ReservationState extends State<Reservation> {
   bool u=true;
-
   bool f=false;
+  List<HistoryModel>  hisorymodel =[];
+  bool n=false;
+  void initState() {
+    getData();
+    // TODO: implement initState
+    print(3);
+    super.initState();
+  }
+
+  Future<void> getData() async{
+    await Provider.of<HistoryProvider>(context,listen:false).getHttp().then((value){
+      hisorymodel = Provider.of<HistoryProvider>(context,listen: false).item;
+      print(10);
+      setState(() {
+        n =true;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,20 +124,35 @@ class _ReservationState extends State<Reservation> {
                 ],
               ),
             ),
-            Container(
-              height: height*0.6,
-              width: width*0.9,
-              child: GridView.builder(
-                  itemCount: 4,
+            SizedBox(height: height*0.05,),
+           n ? Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Container(
+                height: height*0.7,
+                width: width,
+                child: GridView.builder(
+                    padding: const EdgeInsets.all(10.0),
+                    itemCount: hisorymodel.length,
+                    itemBuilder: (context,index){
+                      return ChangeNotifierProvider.value(
+                        value: hisorymodel[index],
+                        child: History(),);
+                },
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 1,
-                  crossAxisSpacing: 10,
-                  childAspectRatio: 3/2,
-                  mainAxisSpacing: 10
-              ), itemBuilder: (context,index){
-                    History();
-              }),
-            )
+                    crossAxisCount: 1,
+                    crossAxisSpacing: 10,
+                     childAspectRatio: 3/1,
+                     mainAxisSpacing: 20
+                  ),
+                ),
+
+              ),
+            ):Center(
+             child: Container(
+                 width: 50,
+                 height: 50,
+                 child: CircularProgressIndicator()),
+           ),
         ]
         ),
       ),

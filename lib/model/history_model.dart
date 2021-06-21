@@ -10,46 +10,42 @@ List<HistoryModel> historyModelFromMap(String str) => List<HistoryModel>.from(js
 
 String historyModelToMap(List<HistoryModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toMap())));
 
-class HistoryModel with ChangeNotifier {
+class HistoryModel with ChangeNotifier{
   HistoryModel({
     this.id,
+    this.createdAt,
+    this.updatedAt,
     this.workspaceId,
     this.phone,
-    this.maxNum,
-    this.hours,
+    this.numberOfIndividual,
     this.date,
-    this.timeFrom,
-    this.timeTo,
   });
 
   final int id;
+  final DateTime createdAt;
+  final DateTime updatedAt;
   final int workspaceId;
   final String phone;
-  final int maxNum;
-  final int hours;
+  final String numberOfIndividual;
   final DateTime date;
-  final String timeFrom;
-  final String timeTo;
 
   factory HistoryModel.fromMap(Map<String, dynamic> json) => HistoryModel(
     id: json["id"],
+    createdAt: DateTime.parse(json["created_at"]),
+    updatedAt: DateTime.parse(json["updated_at"]),
     workspaceId: json["workspace_id"],
     phone: json["phone"],
-    maxNum: json["max_num"],
-    hours: json["hours"],
+    numberOfIndividual: json["numberOfIndividual"],
     date: DateTime.parse(json["date"]),
-    timeFrom: json["time_from"],
-    timeTo: json["time_to"],
   );
 
   Map<String, dynamic> toMap() => {
     "id": id,
+    "created_at": createdAt.toIso8601String(),
+    "updated_at": updatedAt.toIso8601String(),
     "workspace_id": workspaceId,
     "phone": phone,
-    "max_num": maxNum,
-    "hours": hours,
-    "date": "${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}",
-    "time_from": timeFrom,
-    "time_to": timeTo,
+    "numberOfIndividual": numberOfIndividual,
+    "date": date.toIso8601String(),
   };
 }

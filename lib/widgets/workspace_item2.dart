@@ -60,12 +60,12 @@ class WorkspaceItem2 extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),),
-                        Row(
-                          children: [
-                            Icon(Icons.location_on_outlined,color: Colors.red,size: 14,),
-                            Text(ws.location,style: TextStyle(fontSize: 12),)
-                          ],
-                        ),
+                        // Row(
+                        //   children: [
+                        //     Icon(Icons.location_on_outlined,color: Colors.red,size: 14,),
+                        //     Text(ws.location,style: TextStyle(fontSize: 12),)
+                        //   ],
+                        // ),
                         Row(
                           children: [
                             Icon(Icons.star_outlined,color: Colors.yellowAccent,size: 20,),

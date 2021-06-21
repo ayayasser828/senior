@@ -14,7 +14,6 @@ class WorkspaceItem extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     return InkWell(
       onTap: (){
-
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => WsProfile(name: ws.name,
         closeTime: ws.closeTime,
           id: ws.id,
@@ -38,7 +37,7 @@ class WorkspaceItem extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15)
               ),
-              // child: Image.network(ws.profilePicture),
+               child: Image.network("https://myworkyspace.000webhostapp.com/images/Roomsimages/1623606904.jpg"),
             ),
             Positioned(
               right: 30,
@@ -70,12 +69,12 @@ class WorkspaceItem extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                       ),),
-                      Row(
-                        children: [
-                          Icon(Icons.location_on_outlined,color: Colors.red,size: 14,),
-                          Text(ws.location,style: TextStyle(fontSize: 12),)
-                        ],
-                      ),
+                      // Row(
+                      //   children: [
+                      //     Icon(Icons.location_on_outlined,color: Colors.red,size: 14,),
+                      //     Text(ws.location,style: TextStyle(fontSize: 8),)
+                      //   ],
+                      // ),
                       Row(
                         children: [
                           Icon(Icons.star_outlined,color: Colors.yellowAccent,size: 20,),
