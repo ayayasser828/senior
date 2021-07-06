@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:senior/model/history_model.dart';
 import 'package:senior/model/workspaceAPImodel.dart';
 import 'package:senior/provider/WorkspaceProvider.dart';
+import 'package:senior/provider/history_provider.dart';
 class History extends StatefulWidget {
 
   @override
@@ -11,9 +12,11 @@ class History extends StatefulWidget {
 
 class _HistoryState extends State<History> {
   List<WorkspaceApImodel>  workspaceApImodel =[];
+  String wsname;
   bool n=false;
   void initState() {
     getData();
+
     // TODO: implement initState
     super.initState();
   }
@@ -31,6 +34,11 @@ class _HistoryState extends State<History> {
     var Rs = Provider.of<HistoryModel>(context,listen: false);
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
+    for (var i=0;i<workspaceApImodel.length;i++){
+      if (workspaceApImodel[i].id==Rs.workspaceId){
+        wsname=workspaceApImodel[i].name;
+      }
+    }
     return InkWell(
       child: Container(
         width: width*0.8,
@@ -49,12 +57,24 @@ class _HistoryState extends State<History> {
               height: height*0.1,
               color: Colors.black54,
             ),
-            Text( "${Rs.id}",style: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),),
-
+            SizedBox(width: width*0.03,),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text( "${wsname}",style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),),
+                SizedBox(height: height*0.01,),
+                Text('number of individual'+'   '+"${Rs.numberOfIndividual}",style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.lightGreen[900],
+                ),)
+              ],
+            ),
           ],
         ),
       ),

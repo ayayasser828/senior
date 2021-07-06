@@ -6,6 +6,7 @@ import 'package:senior/model/history_model.dart';
 import 'package:senior/model/workspaceAPImodel.dart';
 import 'package:senior/provider/WorkspaceProvider.dart';
 import 'package:senior/provider/history_provider.dart';
+import 'package:senior/provider/room_provider.dart';
 import 'package:senior/screen/Reservations.dart';
 import 'package:senior/screen/homepage.dart';
 import 'package:senior/screen/payment.dart';
@@ -14,6 +15,8 @@ import 'package:senior/screen/splashScreen.dart';
 import 'package:senior/screen/verify.dart';
 import 'package:senior/screen/verify2.dart';
 import 'package:senior/screen/ws_profile.dart';
+
+import 'model/room_model.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,6 +47,12 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider.value(
             value: HistoryModel(),
+          ),
+          ChangeNotifierProvider.value(
+            value: RoomModel(),
+          ),
+          ChangeNotifierProvider.value(
+            value: RoomProvider(),
           ),
 
           ],

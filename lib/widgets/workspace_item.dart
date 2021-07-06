@@ -37,7 +37,7 @@ class WorkspaceItem extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15)
               ),
-               child: Image.network("https://myworkyspace.000webhostapp.com/images/Roomsimages/1623606904.jpg"),
+               child: Image.network("https://myworkyspace.000webhostapp.com/images/workspace/"+ws.profilePicture),
             ),
             Positioned(
               right: 30,

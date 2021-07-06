@@ -15,7 +15,17 @@ class WorkspaceItem2 extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: InkWell(
         onTap: (){
-          Navigator.pushNamed(context, WsProfile.routeName);
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => WsProfile(name: ws.name,
+            closeTime: ws.closeTime,
+            id: ws.id,
+            location: ws.location,
+            mobileOne: ws.mobileOne,
+            mobileTwo: ws.mobileTwo,
+            openTime: ws.openTime,
+            profilePicture: ws.profilePicture,
+            serveFood: ws.serveFood,
+            wifi: ws.wifi,
+          )));
         },
         child: Container(
           width: width*0.8,
