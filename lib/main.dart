@@ -7,6 +7,7 @@ import 'package:senior/model/workspaceAPImodel.dart';
 import 'package:senior/provider/WorkspaceProvider.dart';
 import 'package:senior/provider/history_provider.dart';
 import 'package:senior/provider/room_provider.dart';
+import 'package:senior/provider/search_provider.dart';
 import 'package:senior/screen/Reservations.dart';
 import 'package:senior/screen/homepage.dart';
 import 'package:senior/screen/payment.dart';
@@ -53,6 +54,9 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider.value(
             value: RoomProvider(),
+          ),
+          ChangeNotifierProvider.value(
+            value: SearchProvider(),
           ),
 
           ],

@@ -29,16 +29,20 @@ class WorkspaceItem2 extends StatelessWidget {
         },
         child: Container(
           width: width*0.8,
-          height: height*0.35,
+          height: height*0.1,
           child: Stack(
             children: [
-              Container(
-                width: width*0.45,
-                height: height*0.3,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15)
+              Positioned(
+                right: 10,
+                top: 30,
+                child: Container(
+                  width: width*0.35,
+                  height: height*0.2,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30)
+                  ),
+                  child: Image.network("https://myworkyspace.000webhostapp.com/images/workspace/"+ws.profilePicture,fit: BoxFit.cover,),
                 ),
-                // child: Image.network(ws.profilePicture),
               ),
               Positioned(
                 left: 30,

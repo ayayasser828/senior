@@ -23,7 +23,7 @@ class WorkspaceItem extends StatelessWidget {
           openTime: ws.openTime,
           profilePicture: ws.profilePicture,
           serveFood: ws.serveFood,
-          wifi: ws.wifi,
+          rooms: [],
         )));
       },
       child: Container(

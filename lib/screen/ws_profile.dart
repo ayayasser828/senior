@@ -9,6 +9,7 @@ class WsProfile extends StatelessWidget {
   static const String routeName = "/wsprofile";
   WsProfile({
     this.id,
+    this.userId,
     this.profilePicture,
     this.name,
     this.location,
@@ -18,9 +19,11 @@ class WsProfile extends StatelessWidget {
     this.closeTime,
     this.serveFood,
     this.wifi,
+    this.rooms,
   });
 
   final int id;
+  final int userId;
   final String profilePicture;
   final String name;
   final String location;
@@ -28,8 +31,9 @@ class WsProfile extends StatelessWidget {
   final String mobileTwo;
   final String openTime;
   final String closeTime;
-  final String serveFood;
-  final String wifi;
+  final ServeFood serveFood;
+  final ServeFood wifi;
+  final List<Room> rooms;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -74,7 +78,7 @@ class WsProfile extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              height: height * 0.06,
+                              height: height * 0.02,
                             ),
                             Text(
                               name,
@@ -119,12 +123,12 @@ class WsProfile extends StatelessWidget {
                                         ),
                                       ),
                                       Text(
-                                        wifi,
+                                        "available",
                                         style: TextStyle(fontSize: 14),
                                       )
                                     ],
                                   ),
-
+                                  SizedBox(width: width*0.01,),
                                   Column(
                                     children: [
                                       Container(
@@ -142,11 +146,12 @@ class WsProfile extends StatelessWidget {
                                         ),
                                       ),
                                       Text(
-                                        serveFood,
+                                        "available",
                                         style: TextStyle(fontSize: 14),
                                       )
                                     ],
                                   ),
+                                  SizedBox(width: width*0.01,),
                                   Column(
                                     children: [
                                       InkWell(
