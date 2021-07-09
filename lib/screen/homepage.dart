@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                     searchProvider.q = v;
                   },
                   decoration: new InputDecoration(
-                    suffixIcon: IconButton(icon: Icon(Icons.search),onPressed: () async {
+                    suffixIcon: IconButton(icon: Icon(Icons.search,color: Colors.lightGreen[600] ,),onPressed: () async {
                       print(searchProvider.q);
                       await searchProvider.search().then((value) {
                         print(111);
@@ -107,23 +107,24 @@ class _HomePageState extends State<HomePage> {
                       });
 
                     },),
-                      errorStyle: TextStyle(fontSize: 18.0),
+                      errorStyle: TextStyle(fontSize: 18.0,color: Colors.grey[300]),
                       labelText: 'search',
+                      labelStyle: TextStyle(color: Colors.lightGreen[600]) ,
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: Colors.grey[300],
                       enabledBorder: new OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(25.0),
+                        borderRadius: new BorderRadius.circular(20.0),
                         borderSide: new BorderSide(
-                          color: Colors.grey,
+                          color: Colors.grey[350],
                         ),
                       ),
                       focusedBorder: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(25.0),
+                          borderRadius: new BorderRadius.circular(20.0),
                           borderSide: new BorderSide(
-                            color: Colors.blue,
+                            color: Colors.grey[300],
                           )),
                       border: OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(25.0),
+                          borderRadius: new BorderRadius.circular(20.0),
                           borderSide: BorderSide(
                               color: Colors.black, width: 1.0))),
                   style: new TextStyle(color: Colors.black),
@@ -138,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                   ,style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    color: Colors.lightGreen[900],
                   ),),
               ),
               SizedBox(height: height*0.01,),
@@ -161,8 +162,8 @@ class _HomePageState extends State<HomePage> {
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 1,
                       crossAxisSpacing: 10,
-                      childAspectRatio: 4/2,
-                      mainAxisSpacing: 10
+                      childAspectRatio: 3/2,
+                      //mainAxisSpacing: 10
                     ),
                   ),
                 ),

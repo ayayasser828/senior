@@ -5,7 +5,7 @@ import 'package:senior/model/history_model.dart';
 
 class HistoryProvider with ChangeNotifier{
 
-  final String url="https://workiispace.000webhostapp.com/api/getbooking?api_password=workspace1234";
+  final String url="https://coworkyspace.000webhostapp.com/api/getbookingRooms";
   List<HistoryModel> _Rs =[];
   List<HistoryModel> _RNumber =[];
   List<HistoryModel> get item{
@@ -20,7 +20,7 @@ class HistoryProvider with ChangeNotifier{
       if (response.statusCode >= 200 && response.statusCode <= 299) {
         _Rs = List<HistoryModel>.from(data.map((x) => HistoryModel.fromMap(x)));
         FirebaseAuth auth = FirebaseAuth.instance;
-        print(auth.currentUser.phoneNumber);
+        //print(auth.currentUser.phoneNumber);
         _Rs.forEach((element) {
           //TODO add auth.currentUser.phoneNumber
           if(element.phone == "01275952429"){

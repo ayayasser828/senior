@@ -132,6 +132,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.0"
+  flutter_datetime_picker:
+    dependency: "direct main"
+    description:
+      name: flutter_datetime_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.5.0"
   flutter_signin_button:
     dependency: "direct main"
     description:
@@ -282,6 +289,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.5"
+  rflutter_alert:
+    dependency: "direct main"
+    description:
+      name: rflutter_alert
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   shared_preferences:
     dependency: "direct main"
     description:

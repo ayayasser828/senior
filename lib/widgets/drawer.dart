@@ -4,6 +4,7 @@ import 'package:senior/provider/user_preferences.dart';
 import 'package:senior/screen/Reservations.dart';
 import 'package:senior/screen/payment.dart';
 import 'package:senior/screen/signin.dart';
+import 'package:senior/screen/startup.dart';
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -63,26 +64,18 @@ class MainDrawer extends StatelessWidget {
               ),),
             ),
             SizedBox(height: height*0.04,),
-            Text('Startup ',style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.lightGreen[900],
-                fontFamily:'Acme'
-            ),),
-            SizedBox(height: height*0.04,),
-            Text('Settings ',style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.lightGreen[900],
-                fontFamily:'Acme'
-            ),),
-            SizedBox(height: height*0.04,),
-            Text('help ',style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.lightGreen[900],
-                fontFamily:'Acme'
-            ),),
+            InkWell(
+              onTap: (){
+                Navigator.pushNamed(context, Startup.routeName);
+              },
+              child: Text('Startup ',style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Colors.lightGreen[900],
+                  fontFamily:'Acme'
+              ),),
+            ),
+
             SizedBox(height: height*0.04,),
             InkWell(
               onTap: (){

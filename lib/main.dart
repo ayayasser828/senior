@@ -6,18 +6,19 @@ import 'package:senior/model/history_model.dart';
 import 'package:senior/model/workspaceAPImodel.dart';
 import 'package:senior/provider/WorkspaceProvider.dart';
 import 'package:senior/provider/history_provider.dart';
-import 'package:senior/provider/room_provider.dart';
 import 'package:senior/provider/search_provider.dart';
 import 'package:senior/screen/Reservations.dart';
 import 'package:senior/screen/homepage.dart';
 import 'package:senior/screen/payment.dart';
+import 'package:senior/screen/room.dart';
 import 'package:senior/screen/signin.dart';
 import 'package:senior/screen/splashScreen.dart';
+import 'package:senior/screen/startup.dart';
 import 'package:senior/screen/verify.dart';
 import 'package:senior/screen/verify2.dart';
 import 'package:senior/screen/ws_profile.dart';
 
-import 'model/room_model.dart';
+
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,12 +51,6 @@ class MyApp extends StatelessWidget {
             value: HistoryModel(),
           ),
           ChangeNotifierProvider.value(
-            value: RoomModel(),
-          ),
-          ChangeNotifierProvider.value(
-            value: RoomProvider(),
-          ),
-          ChangeNotifierProvider.value(
             value: SearchProvider(),
           ),
 
@@ -72,6 +67,8 @@ class MyApp extends StatelessWidget {
           Payment.routeName: (context) => Payment(),
           Reservation.routeName: (context) => Reservation(),
           WsProfile.routeName: (context) => WsProfile(),
+          Rooms.routeName: (context) => Rooms(),
+          Startup.routeName: (context) => Startup(),
         },
 
       ),

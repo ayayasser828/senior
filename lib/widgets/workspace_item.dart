@@ -14,16 +14,16 @@ class WorkspaceItem extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     return InkWell(
       onTap: (){
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => WsProfile(name: ws.name,
-        closeTime: ws.closeTime,
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => WsProfile(
+          name: ws.name,
+          closeTime: ws.closeTime,
           id: ws.id,
           location: ws.location,
-          mobileOne: ws.mobileOne,
-          mobileTwo: ws.mobileTwo,
+          mobile: ws.mobile,
           openTime: ws.openTime,
           profilePicture: ws.profilePicture,
           serveFood: ws.serveFood,
-          rooms: [],
+          rooms: ws.rooms,
         )));
       },
       child: Container(
@@ -32,19 +32,19 @@ class WorkspaceItem extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              width: width*0.45,
-              height: height*0.3,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15)
+              height: height*0.25,
+              width: width*0.5,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(17.0),
+                child: Image.network("https://coworkyspace.000webhostapp.com/images/Roomsimages/"+ws.rooms[0].roomImage,fit: BoxFit.cover,),
               ),
-               child: Image.network("https://myworkyspace.000webhostapp.com/images/workspace/"+ws.profilePicture),
             ),
             Positioned(
-              right: 30,
-              top: 40,
+              right: 20,
+              top: 20,
               child: Container(
                 height: height*0.19,
-                width: width*0.35,
+                width: width*0.37,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.white,
@@ -65,7 +65,7 @@ class WorkspaceItem extends StatelessWidget {
                     children: [
 
                       Text( ws.name,style: TextStyle(
-                        fontSize: 17,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                       ),),
@@ -77,11 +77,33 @@ class WorkspaceItem extends StatelessWidget {
                       // ),
                       Row(
                         children: [
-                          Icon(Icons.star_outlined,color: Colors.yellowAccent,size: 20,),
-                          Icon(Icons.star_outlined,color: Colors.yellowAccent,size: 20,),
-                          Icon(Icons.star_outlined,color: Colors.yellowAccent,size: 20,),
-                          Icon(Icons.star_half_sharp,color: Colors.yellowAccent,size: 20,),
-                          Icon(Icons.star_outline,color: Colors.yellowAccent,size: 20,),
+                          Icon(Icons.star_outlined,color: Colors.yellowAccent,size: 15,),
+                          Icon(Icons.star_outlined,color: Colors.yellowAccent,size: 15,),
+                          Icon(Icons.star_outlined,color: Colors.yellowAccent,size: 15,),
+                          Icon(Icons.star_half_sharp,color: Colors.yellowAccent,size: 15,),
+                          Icon(Icons.star_outline,color: Colors.yellowAccent,size: 15,),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+
+
+                              Text('open'),
+                              SizedBox(width: width*0.02,),
+                              Text(ws.openTime,style: TextStyle(color: Colors.lightGreen[900],fontWeight: FontWeight.bold,fontSize: 12),)
+                            ],
+                          ),
+                          Row(
+                            children: [
+
+
+                              Text('close'),
+                              SizedBox(width: width*0.02,),
+                              Text(ws.closeTime,style: TextStyle(color: Colors.lightGreen[900],fontWeight: FontWeight.bold,fontSize: 12),)
+                            ],
+                          ),
                         ],
                       )
                     ],

@@ -68,11 +68,12 @@ class _HistoryState extends State<History> {
                   color: Colors.black,
                 ),),
                 SizedBox(height: height*0.01,),
-                Text('number of individual'+'   '+"${Rs.numberOfIndividual}",style: TextStyle(
+                Text('number of individual'+'   '+"${Rs.maxNum}",style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
                   color: Colors.lightGreen[900],
-                ),)
+                ),),
+
               ],
             ),
           ],

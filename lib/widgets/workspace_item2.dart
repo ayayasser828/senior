@@ -19,12 +19,12 @@ class WorkspaceItem2 extends StatelessWidget {
             closeTime: ws.closeTime,
             id: ws.id,
             location: ws.location,
-            mobileOne: ws.mobileOne,
-            mobileTwo: ws.mobileTwo,
+            mobile: ws.mobile,
             openTime: ws.openTime,
             profilePicture: ws.profilePicture,
             serveFood: ws.serveFood,
             wifi: ws.wifi,
+            rooms: ws.rooms,
           )));
         },
         child: Container(
@@ -34,22 +34,21 @@ class WorkspaceItem2 extends StatelessWidget {
             children: [
               Positioned(
                 right: 10,
-                top: 30,
                 child: Container(
-                  width: width*0.35,
-                  height: height*0.2,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30)
+                  height: height*0.25,
+                  width: width*0.5,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(17.0),
+                    child: Image.network("https://coworkyspace.000webhostapp.com/images/Roomsimages/"+ws.rooms[0].roomImage,fit: BoxFit.cover,),
                   ),
-                  child: Image.network("https://myworkyspace.000webhostapp.com/images/workspace/"+ws.profilePicture,fit: BoxFit.cover,),
                 ),
               ),
               Positioned(
-                left: 30,
-                top: 40,
+                left: 20,
+                top: 20,
                 child: Container(
                   height: height*0.19,
-                  width: width*0.35,
+                  width: width*0.37,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     color: Colors.white,
@@ -64,32 +63,57 @@ class WorkspaceItem2 extends StatelessWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                    child: Directionality(
+                      textDirection: TextDirection.ltr,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
 
-                        Text( ws.name,style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),),
-                        // Row(
-                        //   children: [
-                        //     Icon(Icons.location_on_outlined,color: Colors.red,size: 14,),
-                        //     Text(ws.location,style: TextStyle(fontSize: 12),)
-                        //   ],
-                        // ),
-                        Row(
-                          children: [
-                            Icon(Icons.star_outlined,color: Colors.yellowAccent,size: 20,),
-                            Icon(Icons.star_outlined,color: Colors.yellowAccent,size: 20,),
-                            Icon(Icons.star_outlined,color: Colors.yellowAccent,size: 20,),
-                            Icon(Icons.star_half_sharp,color: Colors.yellowAccent,size: 20,),
-                            Icon(Icons.star_outline,color: Colors.yellowAccent,size: 20,),
-                          ],
-                        )
-                      ],
+                          Text( ws.name,style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),),
+                          // Row(
+                          //   children: [
+                          //     Icon(Icons.location_on_outlined,color: Colors.red,size: 14,),
+                          //     Text(ws.location,style: TextStyle(fontSize: 8),)
+                          //   ],
+                          // ),
+                          Row(
+                            children: [
+                              Icon(Icons.star_outlined,color: Colors.yellowAccent,size: 15,),
+                              Icon(Icons.star_outlined,color: Colors.yellowAccent,size: 15,),
+                              Icon(Icons.star_outlined,color: Colors.yellowAccent,size: 15,),
+                              Icon(Icons.star_half_sharp,color: Colors.yellowAccent,size: 15,),
+                              Icon(Icons.star_outline,color: Colors.yellowAccent,size: 15,),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Row(
+                                children: [
+
+
+                                  Text('open'),
+                                  SizedBox(width: width*0.02,),
+                                  Text(ws.openTime,style: TextStyle(color: Colors.lightGreen[900],fontWeight: FontWeight.bold,fontSize: 12),)
+                                ],
+                              ),
+                              Row(
+                                children: [
+
+
+                                  Text('close'),
+                                  SizedBox(width: width*0.02,),
+                                  Text(ws.closeTime,style: TextStyle(color: Colors.lightGreen[900],fontWeight: FontWeight.bold,fontSize: 12),)
+                                ],
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),

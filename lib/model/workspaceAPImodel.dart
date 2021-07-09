@@ -17,8 +17,7 @@ class WorkspaceApImodel with ChangeNotifier{
     this.profilePicture,
     this.name,
     this.location,
-    this.mobileOne,
-    this.mobileTwo,
+    this.mobile,
     this.openTime,
     this.closeTime,
     this.serveFood,
@@ -31,8 +30,7 @@ class WorkspaceApImodel with ChangeNotifier{
   final String profilePicture;
   final String name;
   final String location;
-  final String mobileOne;
-  final String mobileTwo;
+  final String mobile;
   final String openTime;
   final String closeTime;
   final ServeFood serveFood;
@@ -45,8 +43,7 @@ class WorkspaceApImodel with ChangeNotifier{
     profilePicture: json["profile_picture"],
     name: json["name"],
     location: json["location"],
-    mobileOne: json["mobile_one"],
-    mobileTwo: json["mobile_two"],
+    mobile: json["mobile"],
     openTime: json["open_time"],
     closeTime: json["close_time"],
     serveFood: serveFoodValues.map[json["serve_food"]],
@@ -60,8 +57,7 @@ class WorkspaceApImodel with ChangeNotifier{
     "profile_picture": profilePicture,
     "name": name,
     "location": location,
-    "mobile_one": mobileOne,
-    "mobile_two": mobileTwo,
+    "mobile": mobile,
     "open_time": openTime,
     "close_time": closeTime,
     "serve_food": serveFoodValues.reverse[serveFood],

@@ -20,14 +20,12 @@ class _ReservationState extends State<Reservation> {
   void initState() {
     getData();
     // TODO: implement initState
-    print(3);
     super.initState();
   }
 
   Future<void> getData() async{
     await Provider.of<HistoryProvider>(context,listen:false).getHttp().then((value){
       hisorymodel = Provider.of<HistoryProvider>(context,listen: false).item;
-      print(10);
       setState(() {
         n =true;
       });
@@ -142,7 +140,7 @@ class _ReservationState extends State<Reservation> {
                     crossAxisCount: 1,
                     crossAxisSpacing: 10,
                      childAspectRatio: 3/1,
-                     mainAxisSpacing: 20
+                     //mainAxisSpacing: 20
                   ),
                 ),
 
